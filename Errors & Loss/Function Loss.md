@@ -85,7 +85,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Encourages correct classification with a margin.
      - Used for binary classification.
 
-### 9. **Kullback-Leibler Divergence (KL Divergence)**
+## 9. **Kullback-Leibler Divergence (KL Divergence)**
    - **Formula**: 
      \[
      \text{KL Divergence} = \sum_{i=1}^{n} y_i \log\left(\frac{y_i}{\hat{y}_i}\right)
