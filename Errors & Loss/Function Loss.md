@@ -52,7 +52,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Ranges from 0 to 1, where 1 indicates perfect prediction.
      - Can be negative if the model performs worse than a horizontal line.
 
-### 6. **Huber Loss**
+## 6. **Huber Loss**
    - **Formula**: 
      \[
      L_\delta(y, \hat{y}) = \begin{cases} 
