@@ -304,5 +304,5 @@ Steps to calculate Cosine Similarity:
 ---
 
 **Conclusion:**
-Error metrics are essential tools in machine learning for evaluating model performance. Choosing the right metric depends on the type of problem, the data characteristics, and the specific goals of your project. By understanding these metrics in detail, you can make better decisions to optimize and improve your models.
+Error metrics are essential tools in machine learning for evaluating model performance. Choosing the right metric depends on the type of problem, the data characteristics, and the specific goals of your project. By understanding these metrics in detail, we can make better decisions to optimize and improve the models.
 
