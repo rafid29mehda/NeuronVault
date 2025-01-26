@@ -1,6 +1,6 @@
 In machine learning, errors (or loss functions) are used to measure the difference between the predicted values and the actual values. These errors help in optimizing the model during training. Here are some common types of errors:
 
-### 1. **Mean Squared Error (MSE)**
+## 1. **Mean Squared Error (MSE)**
    - **Formula**: 
      \[
      \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
@@ -11,7 +11,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Always non-negative.
      - The lower the MSE, the better the model.
 
-### 2. **Mean Absolute Error (MAE)**
+## 2. **Mean Absolute Error (MAE)**
    - **Formula**: 
      \[
      \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
