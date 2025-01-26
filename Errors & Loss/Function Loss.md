@@ -22,7 +22,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Easier to interpret since it is in the same units as the target variable.
      - Also always non-negative.
 
-### 3. **Root Mean Squared Error (RMSE)**
+## 3. **Root Mean Squared Error (RMSE)**
    - **Formula**: 
      \[
      \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
@@ -32,7 +32,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Similar to MSE but more interpretable since it is in the same units as the target variable.
      - Sensitive to outliers.
 
-### 4. **Mean Absolute Percentage Error (MAPE)**
+## 4. **Mean Absolute Percentage Error (MAPE)**
    - **Formula**: 
      \[
      \text{MAPE} = \frac{100\%}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
