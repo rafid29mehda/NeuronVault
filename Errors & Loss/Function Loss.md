@@ -75,7 +75,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Penalizes incorrect classifications more heavily.
      - Sensitive to the predicted probabilities.
 
-### 8. **Hinge Loss**
+## 8. **Hinge Loss**
    - **Formula**: 
      \[
      \text{Hinge Loss} = \frac{1}{n} \sum_{i=1}^{n} \max(0, 1 - y_i \cdot \hat{y}_i)
