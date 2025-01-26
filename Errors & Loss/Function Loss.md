@@ -98,7 +98,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
 ## 10. **Custom Loss Functions**
    - **Description**: Depending on the specific problem, custom loss functions can be designed to meet particular requirements. For example, in imbalanced classification, you might use a weighted cross-entropy loss.
 
-### Summary
+## Summary
 - **MSE** and **RMSE** are commonly used in regression tasks.
 - **MAE** is robust to outliers.
 - **Log Loss** and **Hinge Loss** are used in classification tasks.
