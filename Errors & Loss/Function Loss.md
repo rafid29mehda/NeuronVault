@@ -95,7 +95,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Used in tasks like variational autoencoders and reinforcement learning.
      - Asymmetric measure.
 
-### 10. **Custom Loss Functions**
+## 10. **Custom Loss Functions**
    - **Description**: Depending on the specific problem, custom loss functions can be designed to meet particular requirements. For example, in imbalanced classification, you might use a weighted cross-entropy loss.
 
 ### Summary
