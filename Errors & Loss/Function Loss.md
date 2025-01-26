@@ -65,7 +65,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Combines the best properties of MSE and MAE.
      - Requires tuning of the \(\delta\) parameter.
 
-### 7. **Log Loss (Cross-Entropy Loss)**
+## 7. **Log Loss (Cross-Entropy Loss)**
    - **Formula**: 
      \[
      \text{Log Loss} = -\frac{1}{n} \sum_{i=1}^{n} \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]
