@@ -42,7 +42,7 @@ In machine learning, errors (or loss functions) are used to measure the differen
      - Expressed as a percentage, making it easy to interpret.
      - Can be problematic if actual values (\(y_i\)) are zero or close to zero.
 
-### 5. **R-squared (Coefficient of Determination)**
+## 5. **R-squared (Coefficient of Determination)**
    - **Formula**: 
      \[
      R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
