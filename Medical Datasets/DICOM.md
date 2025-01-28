@@ -18,8 +18,110 @@ A DICOM file consists of two main parts:
 1. **Header:** Contains metadata about the image, including patient details, modality, acquisition parameters, and timestamps.
 2. **Pixel Data:** Contains the image data itself, often in a compressed format.
 
-### DICOM Tags:
-DICOM tags are unique identifiers in the form `(Group, Element)` pairs, such as `(0010, 0010)` for the patient's name. These tags store metadata in a structured hierarchy.
+### DICOM Header:
+The header stores metadata as a sequence of **DICOM Tags**. Each tag is uniquely identified by a `(Group, Element)` pair.
+
+#### Components of a DICOM Tag:
+1. **Group Number:** Identifies the category of information (e.g., patient-related, study-related).
+2. **Element Number:** Specifies the specific piece of information within the category.
+3. **Value Representation (VR):** Defines the data type (e.g., `LO` for Long String, `CS` for Code String).
+4. **Value Length:** Indicates the length of the data.
+5. **Value Field:** Contains the actual data.
+
+**Example DICOM Tag Breakdown:**
+- `(0010, 0010)`:
+  - **Group Number:** `0010` (Patient Information).
+  - **Element Number:** `0010` (Patient's Name).
+  - **VR:** `PN` (Person Name).
+  - **Value Length:** Length of the name string.
+  - **Value Field:** Contains the actual patient name.
+
+### Example Header Information:
+```
+(0008, 0020) Study Date               DA: '20250101'
+(0010, 0010) Patient's Name           PN: 'John Doe'
+(0010, 0020) Patient ID               LO: '123456'
+(0020, 000D) Study Instance UID       UI: '1.2.840.113619.2.55.3.604688957.781.1617890065.10'
+(0028, 0010) Rows                     US: 512
+(0028, 0011) Columns                  US: 512
+```
+
+### Pixel Data:
+The pixel data (Tag: `(7FE0, 0010)`) contains the image information in raw numerical form. This data is typically stored as:
+- **Monochrome (grayscale):** Used for modalities like CT and MRI.
+- **RGB (color):** Used for modalities like dermatology or pathology imaging.
+
+---
+
+## DICOM Data Structure
+The structure of a DICOM file is hierarchical and consists of the following key elements:
+
+### 1. File Meta Information:
+This is the first part of the DICOM file and includes:
+- **File Preamble (128 bytes):** Reserved for compatibility.
+- **DICOM Prefix (4 bytes):** Always contains "DICM".
+- **File Meta Elements:** Contain metadata about the file itself, such as:
+  - Transfer Syntax UID (e.g., for compression types).
+  - Media Storage SOP Class UID.
+
+### 2. Dataset:
+The dataset includes all other information in the DICOM file, including:
+- **Patient Module:** Information about the patient, such as name, age, and ID.
+- **Study Module:** Data related to the study, such as study date, description, and ID.
+- **Series Module:** Information about the series within the study, such as series number and modality.
+- **Image Module:** Details specific to the image, such as pixel spacing, orientation, and dimensions.
+
+### Example Dataset Hierarchy:
+```
+Root Dataset
+├── Patient Module
+│   ├── Patient's Name
+│   ├── Patient ID
+│   └── Patient's Birth Date
+├── Study Module
+│   ├── Study Instance UID
+│   ├── Study Date
+│   └── Study Description
+├── Series Module
+│   ├── Series Instance UID
+│   ├── Modality
+│   └── Series Number
+└── Image Module
+    ├── Rows
+    ├── Columns
+    └── Pixel Data
+```
+
+### 3. Nested Sequences:
+DICOM files can contain nested sequences, represented as a list of datasets. These are often used for:
+- **Multi-frame images:** E.g., a dynamic CT scan with multiple frames.
+- **Structured reports:** Hierarchical data for annotations or findings.
+
+#### Example of Nested Sequences:
+```
+(0008, 1110) Referenced Study Sequence
+    (0008, 1150) Referenced SOP Class UID  UI: 1.2.840.10008.5.1.4.1.1.2
+    (0008, 1155) Referenced SOP Instance UID UI: 1.2.3.4.5.6.7.8.9.10
+```
+
+---
+
+### Data Types in DICOM:
+DICOM uses specific **Value Representations (VRs)** to describe the data format of each tag:
+- **PN (Person Name):** Encodes names (e.g., `Doe^John` for Last^First).
+- **DA (Date):** Encodes dates in `YYYYMMDD` format.
+- **TM (Time):** Encodes time in `HHMMSS.frac` format.
+- **IS (Integer String):** Encodes integers as text.
+- **DS (Decimal String):** Encodes floating-point numbers as text.
+- **UI (Unique Identifier):** Encodes globally unique identifiers.
+
+---
+
+### Transfer Syntax:
+DICOM files support different transfer syntaxes for data encoding:
+1. **Explicit VR Little Endian:** Explicitly specifies the VR for each tag.
+2. **Implicit VR Little Endian:** Assumes VR based on the tag.
+3. **JPEG Lossy or Lossless:** For compressed image data.
 
 ---
 
@@ -87,7 +189,6 @@ plt.show()  # Renders the visualization.
 
 ---
 
-### Preprocessing DICOM Data
 Preprocessing involves preparing DICOM data for analysis or model training. This includes resizing, normalization, and augmentation.
 
 ### Case 1: Resizing Images
