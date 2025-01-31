@@ -109,15 +109,80 @@ To prevent overfitting, pruning is applied:
 
 ---
 
-## 8. Conclusion
+## 8. When Decision Trees Perform Better
 
-Decision Trees are a fundamental ML model, providing simple yet powerful classification and regression capabilities. While they have limitations like overfitting, these can be mitigated using ensemble techniques and pruning methods.
+Decision Trees outperform other models in the following scenarios:
+
+- **When Interpretability is Crucial**: Unlike black-box models like neural networks, decision trees are easy to interpret and visualize, making them ideal for industries like healthcare, finance, and legal decision-making.
+- **When the Data Contains Both Categorical and Numerical Features**: Many models, such as logistic regression, require extensive feature engineering, whereas decision trees naturally handle mixed data types without requiring transformation.
+- **When Handling Missing Data**: Decision trees can split data even when some values are missing, unlike models like SVM that require imputation.
+- **When Feature Scaling is Not Feasible**: Unlike SVM and KNN, which require standardization or normalization, decision trees work well without feature scaling.
+- **When There are Non-linear Relationships in Data**: Decision trees can capture complex decision boundaries that linear models like logistic regression cannot.
+- **When the Dataset is Small to Medium in Size**: Decision trees perform well on small datasets without requiring large computational resources, whereas neural networks and ensemble models need more data to generalize well.
+- **When Fast Predictions are Needed**: Once trained, decision trees make predictions quickly compared to iterative models like SVM or deep learning models.
+
+However, for high-dimensional datasets, ensemble models like Random Forest or Gradient Boosting often perform better by reducing overfitting and improving stability.
 
 ---
 
-## 9. References
+## 9. Implementing Decision Tree in Python
 
-- "Pattern Recognition and Machine Learning" – Christopher Bishop
-- Scikit-learn Documentation: [https://scikit-learn.org/stable/](https://scikit-learn.org/stable/)
-- "Introduction to Machine Learning with Python" – Andreas Müller and Sarah Guido
+### Classification Example:
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.datasets import load_iris
+
+# Load dataset
+data = load_iris()
+X, y = data.data, data.target
+
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train model
+dt_model = DecisionTreeClassifier(criterion='gini', max_depth=3, random_state=42)
+dt_model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = dt_model.predict(X_test)
+
+# Evaluate model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+```
+
+### Regression Example:
+```python
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+from sklearn.datasets import fetch_california_housing
+
+# Load dataset
+data = fetch_california_housing()
+X, y = data.data, data.target
+
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train model
+dt_regressor = DecisionTreeRegressor(max_depth=5, random_state=42)
+dt_regressor.fit(X_train, y_train)
+
+# Make predictions
+y_pred = dt_regressor.predict(X_test)
+
+# Evaluate model
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean Squared Error: {mse:.2f}")
+```
+
+---
+
+## 10. Conclusion
+
+Decision Trees are a fundamental ML model, providing simple yet powerful classification and regression capabilities. While they have limitations like overfitting, these can be mitigated using ensemble techniques and pruning methods. They are particularly useful when interpretability is essential, and datasets contain mixed types of data.
+
 
