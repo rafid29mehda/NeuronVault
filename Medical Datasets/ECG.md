@@ -1,4 +1,4 @@
-## All about ECG Dataset
+# All about ECG Dataset
 
 ## Introduction to ECG Data
 Electrocardiogram (ECG or EKG) data is a representation of the electrical activity of the heart over time. It is commonly used by medical professionals to diagnose and monitor cardiovascular diseases, such as arrhythmias, heart attacks, and heart failure. ECG data is captured using electrodes placed on the skin, which measure the heart's electrical impulses and display them as waveforms. It is used for diagnosing and monitoring various cardiovascular conditions, such as arrhythmias, heart attacks, and other heart diseases. ECG signals are typically represented as time-series data where each data point corresponds to the heart's electrical activity at a specific time.
