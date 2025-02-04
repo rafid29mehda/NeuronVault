@@ -1,4 +1,4 @@
-Here is a detailed documentation outline for an ECG (Electrocardiogram) dataset. This includes an introduction to ECG data, its structure, common preprocessing techniques, and how it can be incorporated into machine/deep learning pipelines:
+
 
 ---
 
