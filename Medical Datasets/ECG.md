@@ -36,7 +36,7 @@ ECG data is typically represented as time-series data, where each recorded point
 
 ---
 
-## Preprocessing Scenarios ECG Data
+## Preprocessing ECG Data
 Preprocessing ECG data is crucial to remove noise, normalize signals, extract features, and prepare the data for machine learning models.
 
 ### 1. Noise Filtering
