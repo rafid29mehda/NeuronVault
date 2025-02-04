@@ -1,7 +1,3 @@
-
-
----
-
 # Detailed Documentation on ECG Dataset
 
 ## Introduction to ECG Data
