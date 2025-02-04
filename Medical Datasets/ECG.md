@@ -201,6 +201,119 @@ lstm_ready_ecg = ecgr_segments.reshape(ecgr_segments.shape[0], ecgr_segments.sha
 
 ---
 
-## Conclusion
-Preprocessing ECG data is crucial for noise reduction, normalization, feature extraction, and preparing the data for machine learning models. The techniques described ensure that ECG signals are properly formatted for deep learning models like CNNs and LSTMs. By following these steps, ECG data can be effectively used in AI-driven medical diagnostics and real-time heart monitoring systems.
+## 2. Using ECG Data in Machine/Deep Learning Models
+Once the ECG data is preprocessed, it can be integrated into deep learning models for tasks such as arrhythmia detection, heart rate prediction, and anomaly detection.
+
+### 2.1 Convolutional Neural Network (CNN) for ECG Classification
+Convolutional Neural Networks (CNNs) are effective in extracting spatial features from ECG signals.
+
+**Code Example:**
+```python
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv1D, MaxPooling1D, Flatten, Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+
+# Define a 1D CNN model for ECG classification
+model = Sequential([
+    Conv1D(64, kernel_size=3, activation='relu', input_shape=(256, 1)),
+    MaxPooling1D(pool_size=2),
+    Conv1D(128, kernel_size=3, activation='relu'),
+    MaxPooling1D(pool_size=2),
+    Flatten(),
+    Dense(64, activation='relu'),
+    Dropout(0.5),
+    Dense(1, activation='sigmoid')  # Binary classification
+])
+
+# Compile the model
+model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+
+# Display model summary
+model.summary()
+```
+
+**Explanation of Code:**
+- **Conv1D Layers:** Extracts spatial features from ECG signals.
+- **MaxPooling1D Layers:** Reduces complexity and overfitting.
+- **Dense Layers:** Fully connected layers for classification.
+- **Dropout Layer:** Prevents overfitting.
+- **Binary Output:** Uses sigmoid activation for classification.
+
+### 2.2 Training the CNN Model
+**Code Example:**
+```python
+# Train the model
+history = model.fit(train_dataset, validation_data=validation_dataset, epochs=20, batch_size=32)
+```
+
+**Expected Output:**
+- The training process logs accuracy and loss values.
+
+### 2.3 Evaluating and Testing the Model
+**Code Example:**
+```python
+# Evaluate the model on test dataset
+test_loss, test_accuracy = model.evaluate(test_dataset)
+print(f"Test Loss: {test_loss}, Test Accuracy: {test_accuracy}")
+
+# Make predictions
+predictions = model.predict(test_dataset)
+```
+
+### 2.4 Long Short-Term Memory (LSTM) Network for ECG Sequence Analysis
+LSTMs are useful for learning temporal patterns in ECG signals.
+
+**Code Example:**
+```python
+from tensorflow.keras.layers import LSTM
+
+# Define an LSTM model for ECG classification
+lstm_model = Sequential([
+    LSTM(64, return_sequences=True, input_shape=(256, 1)),
+    LSTM(128),
+    Dense(64, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+
+# Compile the model
+lstm_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the model
+history = lstm_model.fit(train_dataset, validation_data=validation_dataset, epochs=20, batch_size=32)
+```
+
+### 2.5 Deploying the Model for Real-Time ECG Analysis
+**Code Example:**
+```python
+# Load a new ECG signal for real-time prediction
+new_ecg_signal = np.random.rand(256, 1)  # Replace with actual ECG data
+new_ecg_signal = new_ecg_signal.reshape(1, 256, 1)
+
+# Predict using the trained model
+prediction = model.predict(new_ecg_signal)
+
+# Interpret the result
+if prediction[0] > 0.5:
+    print("Arrhythmia detected")
+else:
+    print("Normal ECG")
+```
+
+### 2.6 Visualizing Model Performance
+**Code Example:**
+```python
+import matplotlib.pyplot as plt
+
+# Plot accuracy
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.title('Model Accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+```
+
+### Conclusion
+This documentation provides a comprehensive guide for handling ECG datasets, from preprocessing to training deep learning models such as CNNs and LSTMs. By following these steps, ECG data can be effectively used in AI-driven medical diagnostics and real-time heart monitoring systems.
 
