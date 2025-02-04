@@ -325,4 +325,4 @@ plt.show()
 ```
 
 ### Conclusion
-This documentation provides a comprehensive guide for handling ECG datasets, from preprocessing to training deep learning models such as CNNs and LSTMs. By following these steps, ECG data can be effectively used in AI-driven medical diagnostics and real-time heart monitoring systems.
+This documentation provides a comprehensive guide for working with ECG datasets, from preprocessing to training deep learning models such as CNNs and LSTMs. By following these steps, ECG data can be effectively used in AI-driven medical diagnostics and real-time heart monitoring systems.
